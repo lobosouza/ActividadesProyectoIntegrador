@@ -5,28 +5,44 @@ import { useEffect, useState } from 'react'
 
 
 function App() {
-  //Estado y funcion actualizadora
-  const [productos, setProductos] = useState([]);
+  //Estado = variable interna y funcion actualizadora = modifica el estado
+  const [Productos, setProductos] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
 
   useEffect(()=>{
     axios.get('https://fakestoreapi.com/products?limit=10').then((res)=>{
-      setProductos(res.data) //almacena productos en el estado setProductos
+      setProductos(res.data) //promesa = obtiene los productos, finalizada la promesa = almacena productos en el estado setProductos
     })
   },[]);
-  
+
+
+
+
   return (
     <>
-      <div>
+      
       <h1>Proyecto Integrador - ISPC</h1>
+      
       <Cards />
       
-      <ul>
-        {productos.map((p)=>(
-          <li key={p.key}>{p.title} Precio: ${p.price}</li>)
+      <input type="text" placeholder='Buscar producto' 
+      value={busqueda} 
+      onChange={(e)=>{setBusqueda(e.target.value)}} />
+
+
+
+      <ul> 
+        <div class="grid grid-cols-4 gap-4"> 
+        {Productos.map((p)=>(
+          <li key={p.key} className="flex py-4">
+            {p.title} 
+             Precio: ${p.price}</li>)
         )}
       
+        </div>
       </ul>
-      </div>
+      
+      
       
       
       
