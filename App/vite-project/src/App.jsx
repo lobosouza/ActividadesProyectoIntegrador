@@ -38,9 +38,9 @@ function App() {
         <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-4">   
             
         {filtradoProductos.map((p)=>(
-          <li key={p.key} className="border p-1 rounded-lg shadow-md">
-            {p.title} 
-             Precio: ${p.price}</li>)
+          <li key={p.key} className="bg-sky-200 border p-1 rounded-lg shadow-md">
+            <h2 className="text-gray-900 title-font text-lg font-medium">{p.title}</h2> 
+             <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Precio: ${p.price}</h3></li>)
         )}
               
             
