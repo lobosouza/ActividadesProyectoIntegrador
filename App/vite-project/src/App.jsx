@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 function App() {
   //Estado = variable interna y funcion actualizadora = modifica el estado
-  const [Productos, setProductos] = useState([]);
+  const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState('');
 
   useEffect(()=>{
@@ -15,6 +15,9 @@ function App() {
     })
   },[]);
 
+  // filtrado
+
+  const filtradoProductos = productos.filter((p)=> p.title.toLowerCase().includes(busqueda.toLowerCase()));
 
 
 
@@ -32,14 +35,17 @@ function App() {
 
 
       <ul> 
-        <div class="grid grid-cols-4 gap-4"> 
-        {Productos.map((p)=>(
-          <li key={p.key} className="flex py-4">
+        <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-4">   
+            
+        {filtradoProductos.map((p)=>(
+          <li key={p.key} className="border p-1 rounded-lg shadow-md">
             {p.title} 
              Precio: ${p.price}</li>)
         )}
-      
-        </div>
+              
+            
+          </div>
+        
       </ul>
       
       
