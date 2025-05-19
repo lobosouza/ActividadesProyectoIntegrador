@@ -18,8 +18,12 @@ function App() {
   // filtrado
 
   const filtradoProductos = productos.filter((p)=> p.title.toLowerCase().includes(busqueda.toLowerCase()));
-  const totalProductos = productos.length;
+  
+  // Estadisticas 
 
+  const totalProductos = filtradoProductos.length;
+  const maxProductos = Math.max(...filtradoProductos.map((p)=>p.price));
+  const minProductos = Math.min(...filtradoProductos.map((p)=>p.price));
 
 
   return (
@@ -53,7 +57,10 @@ function App() {
       <div>
         <h1> Estadísticas </h1>
         <p>Total de Productos: {totalProductos} </p>
-
+        
+        <p>Precio Maximo: {maxProductos} </p>
+                
+        <p>Precio Minimo: {minProductos} </p>
       </div>
       
       
