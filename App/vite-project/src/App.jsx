@@ -41,7 +41,7 @@ function App() {
 
 
       <ul> 
-        <div class="grid lg:grid-cols-5 md:grid-cols-2 gap-4">   
+        <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-4">   
             
         {filtradoProductos.map((p)=>(
           <li key={p.key} className="bg-sky-200 border p-1 rounded-lg shadow-md">
@@ -54,7 +54,7 @@ function App() {
         
       </ul>
 
-      <div>
+      <div className='m-4 bg-sky-950 border p-1 rounded-lg shadow-md'>
         <h1> Estadísticas </h1>
         <p>Total de Productos: {totalProductos} </p>
         
