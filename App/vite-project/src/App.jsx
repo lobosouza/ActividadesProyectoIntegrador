@@ -10,27 +10,29 @@ function App() {
   const [busqueda, setBusqueda] = useState('');
 
   useEffect(()=>{
-    axios.get('https://fakestoreapi.com/products?limit=10').then((res)=>{
-      setProductos(res.data) //promesa = obtiene los productos, finalizada la promesa = almacena productos en el estado setProductos
+    axios.get('https://dummyjson.com/products?limit=100').then((res)=>{
+      setProductos(res.data.products) //promesa = obtiene los productos, finalizada la promesa = almacena productos en el estado setProductos
     })
   },[]);
 
   // filtrado
 
   const filtradoProductos = productos.filter((p)=> p.title.toLowerCase().includes(busqueda.toLowerCase()));
+  const totalProductos = productos.length;
 
 
 
   return (
     <>
-      
+      <div className="m-8">
       <h1>Proyecto Integrador - ISPC</h1>
       
       <Cards />
-      
-      <input type="text" placeholder='Buscar producto' 
-      value={busqueda} 
-      onChange={(e)=>{setBusqueda(e.target.value)}} />
+      <div className="m-4">
+        <input type="text" placeholder='Buscar producto' 
+        value={busqueda} 
+        onChange={(e)=>{setBusqueda(e.target.value)}} />
+      </div>  
 
 
 
@@ -47,11 +49,17 @@ function App() {
           </div>
         
       </ul>
+
+      <div>
+        <h1> Estadísticas </h1>
+        <p>Total de Productos: {totalProductos} </p>
+
+      </div>
       
       
       
       
-      
+        </div>
     </>
   )
 }
